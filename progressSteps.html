@@ -1,0 +1,333 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+<!--    <title>Preogress Steps</title>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        <div class="progress-container">-->
+<!--            <div class="progress" id="progress"></div>-->
+<!--            <div class="circle active">1</div>-->
+<!--            <div class="circle">2</div>-->
+<!--            <div class="circle">3</div>-->
+<!--            <div class="circle">4</div>-->
+<!--        </div>-->
+
+<!--        <button class="btn" id="btnPrev" disabled>Prev</button>-->
+<!--        <button class="btn" id="btnNext">Next</button>-->
+<!--    </div>-->
+<!--</body>-->
+
+<!--<script>-->
+<!--    const progress = document.getElementById('progress')-->
+<!--    const btnPrev = document.getElementById('btnPrev')-->
+<!--    const btnNext = document.getElementById('btnNext')-->
+<!--    const circles = document.querySelectorAll('.circle')-->
+
+<!--    let currentActive = 1-->
+
+<!--    btnNext.addEventListener('click', () => {-->
+<!--        currentActive++-->
+
+<!--        if(currentActive > circles.length) {-->
+<!--            currentActive = circles.length-->
+<!--        }-->
+
+<!--        update()-->
+<!--    })-->
+
+<!--    btnPrev.addEventListener('click', () => {-->
+<!--        currentActive&#45;&#45;-->
+
+<!--        if(currentActive < 1) {-->
+<!--            currentActive = 1-->
+<!--        }-->
+
+<!--        update()-->
+<!--    })-->
+
+<!--    function update() {-->
+<!--        circles.forEach((circle, idx) => {-->
+<!--            if(idx < currentActive) {-->
+<!--                circle.classList.add('active')-->
+<!--            } else {-->
+<!--                circle.classList.remove('active')-->
+<!--            }-->
+<!--        })-->
+
+<!--        const actives = document.querySelectorAll('.active')-->
+
+<!--        progress.style.width = (actives.length - 1) / (circles.length - 1) * 100 + '%'-->
+
+<!--        if(currentActive === 1) {-->
+<!--            btnPrev.disabled = true-->
+<!--        } else if(currentActive === circles.length) {-->
+<!--            btnNext.disabled = true-->
+<!--        } else {-->
+<!--            btnPrev.disabled = false-->
+<!--            btnNext.disabled = false-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+<!--<style>-->
+<!--@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');-->
+
+<!--:root {-->
+<!--    &#45;&#45;line-border-fill: grey;-->
+<!--    &#45;&#45;line-border-empty: red;-->
+<!--}-->
+
+<!--body {-->
+<!--    background: yellow;-->
+<!--    font-family: "Muli", sans-serif;-->
+<!--    display: flex;-->
+<!--    margin: 0;-->
+
+<!--    flex-direction: column;-->
+<!--    align-items: center;-->
+<!--    justify-content: center;-->
+<!--    height: 100vh;-->
+<!--    overflow: hidden;-->
+<!--}-->
+
+<!--* {-->
+<!--    box-sizing: border-box;-->
+<!--}-->
+
+<!--.container {-->
+<!--    text-align: center;-->
+<!--}-->
+
+<!--.progress-container {-->
+<!--    display: flex;-->
+<!--    justify-content: space-between;-->
+<!--    position: relative;-->
+<!--    margin-bottom: 30px;-->
+<!--    max-width: 100%;-->
+<!--    width: 350px;-->
+<!--}-->
+
+<!--.progress-container::before {-->
+<!--    content: '';-->
+<!--    background: lightgray;-->
+<!--    position: absolute;-->
+<!--    top: 50%;-->
+<!--    left: 0;-->
+<!--    transform: translateY(-50%);-->
+<!--    height: 4px;-->
+<!--    width: 100%;-->
+<!--    z-index: -1;-->
+<!--}-->
+
+<!--.progress {-->
+<!--    background: grey;-->
+<!--    position: absolute;-->
+<!--    top: 50%;-->
+<!--    left: 0;-->
+<!--    transform: translateY(-50%);-->
+<!--    height: 4px;-->
+<!--    width: 0%;-->
+<!--    z-index: -1;-->
+<!--    transition: 0.4s ease;-->
+<!--}-->
+
+<!--.circle {-->
+<!--    background-color: white;-->
+<!--    color: gray;-->
+<!--    border-radius: 50%;-->
+<!--    height: 30px;-->
+<!--    width: 30px;-->
+<!--    display: flex;-->
+<!--    align-items: center;-->
+<!--    justify-content: center;-->
+<!--    border: 3px solid lightgray;-->
+<!--    transition: 0.4s ease;-->
+<!--}-->
+
+<!--.circle.active {-->
+<!--    border-color: var(&#45;&#45;line-border-fill);-->
+<!--}-->
+
+<!--.btn {-->
+<!--    background: var(&#45;&#45;line-border-fill);-->
+<!--    color: white;-->
+<!--    border: 0;-->
+<!--    border-radius: 6px;-->
+<!--    cursor: pointer;-->
+<!--    font-family: inherit;-->
+<!--    padding: 8px 30px;-->
+<!--    margin: 5px;-->
+<!--    font-size: 14px;-->
+<!--}-->
+
+<!--.btn:active {-->
+<!--    transform: scale(0.98);-->
+<!--}-->
+
+<!--.btn:focus {-->
+<!--    outline: 0;-->
+<!--}-->
+
+<!--.btn:disabled {-->
+<!--    background: var(&#45;&#45;line-border-empty);-->
+<!--    cursor: not-allowed;-->
+<!--}-->
+<!--</style>-->
+<!--</html>-->
+
+<!--first attempt-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Preogress Steps</title>
+</head>
+<body>
+<div class="app">
+    <div class="wrapper">
+        <div class="circle active">1</div>
+        <div class="line"></div>
+        <div class="circle">2</div>
+        <div class="line"></div>
+        <div class="circle">3</div>
+        <div class="line"></div>
+        <div class="circle">4</div>
+    </div>
+    <div>
+        <button class="btn" id="prevBtn" onclick="subtractValue()" disabled >Prev</button>
+        <button class="btn" id="nextBtn" onclick="addValue()">Next</button>
+    </div>
+</div>
+</body>
+
+<script>
+    const circles = Array.from(document.querySelectorAll('.circle'));
+    const lines = Array.from(document.querySelectorAll('.line'));
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let activeIndex = 0;
+
+    const updateActiveState = () => {
+        circles.forEach((circle, index) => {
+            circle.classList.toggle('active', index <= activeIndex);
+        });
+
+        lines.forEach((line, index) => {
+            line.classList.toggle('active', index < activeIndex);
+        });
+    };
+
+    const updateButtonState = () => {
+        prevBtn.disabled = activeIndex === 0;
+        nextBtn.disabled = activeIndex === circles.length - 1;
+    };
+
+    function update() {
+        updateActiveState();
+        updateButtonState();
+    };
+
+    function addValue() {
+        activeIndex++;
+        update();
+    };
+
+    function subtractValue() {
+        activeIndex--;
+        update();
+    };
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+    body {
+        font-family: "Muli", sans-serif;
+        display: flex;
+        margin: 0;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border: 2px solid lightgray;
+        border-radius: 50%;
+        background-color: white;
+        color: black;
+    }
+
+    .circle.active {
+        border-color: blue;
+        transition: 0.7s ease;
+    }
+
+    .line {
+        flex-grow: 1;
+        height: 2px;
+        background-color: lightgray;
+    }
+
+    .line.active {
+        background-color: blue;
+        transition: 0.7s ease;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: blue;
+        color: white;
+        cursor: pointer;
+    }
+
+    .btn:disabled {
+        background-color: lightgray;
+        cursor: not-allowed;
+    }
+
+    #prevBtn {
+        margin-right: 5px;
+    }
+
+    #nextBtn {
+        margin-left: 5px;
+    }
+</style>
+</html>

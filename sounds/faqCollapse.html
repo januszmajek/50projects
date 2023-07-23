@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>FAQ</title>
+</head>
+
+<body>
+    <h1 class="title">Frequently Asked Questions</h1>
+    <div class="faq-container">
+        <div class="faq active">
+            <h3 class="faq-title">
+                Why shouldn't we trust atoms?
+            </h3>
+
+            <p class="description">
+                They make up everything
+            </p>
+
+            <button class="toggle">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                What do you call someone with no body and no nose?
+            </h3>
+            <p class="description">
+                Nobody knows.
+            </p>
+            <button class="toggle">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                What's the object-oriented way to become wealthy?
+            </h3>
+            <p class="description">
+                Inheritance.
+            </p>
+            <button class="toggle">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                How many tickles does it take to tickle an octopus?
+            </h3>
+            <p class="description">
+                Ten-tickles!
+            </p>
+            <button class="toggle">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                What is: 1 + 1?
+            </h3>
+            <p class="description">
+                Depends on who are you asking.
+            </p>
+            <button class="toggle">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+</body>
+
+<script>
+    const toggles = document.querySelectorAll('.toggle')
+
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            toggle.parentNode.classList.toggle('active')
+        })
+    })
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        margin: 0;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .title {
+        margin: 50px 0 30px;
+        text-align: center;
+    }
+
+    .faq-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .faq {
+        background-color: transparent;
+        border: 1px solid #d2c8c8;
+        border-radius: 10px;
+        margin: 20px 0;
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s ease;
+    }
+
+    .faq.active {
+        background-color: white;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq.active::before,
+    .faq.active::after {
+        /*content: '\f075';*/
+        color: darkseagreen;
+        font-size: 7rem;
+        position: absolute;
+        opacity: 0.2;
+        top: 20px;
+        left: 20px;
+        z-index: 0;
+    }
+
+    .faq.active::before {
+        color: cornflowerblue;
+        top: -10px;
+        left: -30px;
+        transform: rotateY(180deg);
+    }
+
+    .faq-title {
+        margin: 0 35px 0 0;
+    }
+
+    .description {
+        display: none;
+        margin: 30px 0 0;
+    }
+
+    .faq.active .description {
+        display: block;
+    }
+
+    .toggle {
+        background-color: transparent;
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        padding: 0;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        height: 30px;
+        width: 30px;
+    }
+
+    .toggle:focus {
+        outline: 0;
+    }
+
+    .toggle .fa-times {
+        display: none;
+    }
+
+    .faq.active .toggle .fa-times {
+        color: white;
+        display: block;
+    }
+
+    .faq.active .toggle .fa-chevron-down {
+        display: none;
+    }
+
+    .faq.active .toggle {
+        background-color: #99a1a8;
+    }
+</style>
+</html>

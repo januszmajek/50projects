@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Rotating Navigation</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="circle-container">
+            <div class="circle">
+                <button id="close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button id="open">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>Amazing Article</h1>
+            <small>Janusz Majek</small>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ipsum nisi, accumsan quis felis in, imperdiet semper mauris. Duis ultrices nunc eget posuere ullamcorper. Sed accumsan vehicula arcu non consequat. Praesent auctor augue leo, eu dapibus leo tristique sit amet. Nam odio ligula, auctor non mi nec, elementum vulputate eros. Morbi porta libero non velit placerat sodales et sed sem. Vivamus ultricies felis urna, ut consectetur nulla porta ac. Sed sodales ligula dictum porta consectetur. Mauris tincidunt pulvinar arcu sed semper. Etiam dictum maximus velit a tincidunt. Nunc iaculis porttitor turpis. Quisque tincidunt porttitor nisl, in dignissim nulla mollis a. Integer feugiat turpis porttitor nulla faucibus, ac finibus quam ornare. Cras aliquam magna porttitor felis hendrerit hendrerit. Nam ac libero ut augue facilisis mollis.</p>
+            <h3>My president</h3>
+            <img src="https://paczaizm.pl/content/wp-content/uploads/andrzej-duda-i-send-you-migi-you-send-m-f16-thank-you-from-the-mountain.jpg" alt="doggy" />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ipsum nisi, accumsan quis felis in, imperdiet semper mauris. Duis ultrices nunc eget posuere ullamcorper. Sed accumsan vehicula arcu non consequat. Praesent auctor augue leo, eu dapibus leo tristique sit amet. Nam odio ligula, auctor non mi nec, elementum vulputate eros. Morbi porta libero non velit placerat sodales et sed sem. Vivamus ultricies felis urna, ut consectetur nulla porta ac. Sed sodales ligula dictum porta consectetur. Mauris tincidunt pulvinar arcu sed semper. Etiam dictum maximus velit a tincidunt. Nunc iaculis porttitor turpis. Quisque tincidunt porttitor nisl, in dignissim nulla mollis a. Integer feugiat turpis porttitor nulla faucibus, ac finibus quam ornare. Cras aliquam magna porttitor felis hendrerit hendrerit. Nam ac libero ut augue facilisis mollis.</p>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><i class="fas fa-home"></i><a href="#"> Home</a></li>
+            <li><i class="fas fa-user-alt"></i><a href="#"> About</a></li>
+            <li><i class="fas fa-envelope"></i><a href="#"> Contact</a></li>
+        </ul>
+    </nav>
+</body>
+
+<script>
+    const open = document.getElementById('open')
+    const close = document.getElementById('close')
+    const container = document.querySelector('.container')
+
+    open.addEventListener('click', () => container.classList.add('show-nav'))
+    close.addEventListener('click', () => container.classList.remove('show-nav'))
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Lato', sans-serif;
+        background-color: #333;
+        color: #222;
+        overflow-x: hidden;
+        margin: 0;
+    }
+
+    .container {
+        background-color: white;
+        transform-origin: top left;
+        transition: transform 0.5s linear;
+        width: 100vw;
+        min-height: 100vh;
+        padding: 50px;
+    }
+
+    .container.show-nav {
+        transform: rotate(-20deg);
+    }
+
+    .circle-container {
+        position: fixed;
+        top: -100px;
+        left: -100px;
+    }
+
+    .circle {
+        background-color: orangered;
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        position: relative;
+        transition: transform 0.5s linear;
+    }
+
+    .container.show-nav .circle {
+        transform: rotate(-70deg);
+    }
+
+    .circle button {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100px;
+        background: transparent;
+        border: 0;
+        font-size: 26px;
+        color: white;
+    }
+
+    .circle button:focus {
+        outline: none;
+    }
+
+    .circle button#open {
+        left: 60%;
+    }
+
+    .circle button#close {
+        top: 60%;
+        transform: rotate(90deg);
+        transform-origin: top left;
+    }
+
+    .container.show-nav + nav li {
+        transform: translateX(0);
+        transition-delay: 0.3s;
+    }
+
+    nav {
+        position: fixed;
+        bottom: 40px;
+        left: 0;
+        z-index: 100;
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding-left: 30px;
+    }
+
+    nav ul li {
+        text-transform: uppercase;
+        color: white;
+        margin: 40px 0;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-in;
+    }
+
+    nav ul li i {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    nav ul li + li {
+        margin-left: 15px;
+        transform: translateX(-150%);
+    }
+
+    nav ul li + li + li {
+        margin-left: 30px;
+        transform: translateX(-200%);
+    }
+
+    nav a{
+        color: white;
+        text-decoration: none;
+        transition: all 0.5s;
+    }
+
+    nav a:hover {
+        color: orangered;
+        font-weight: bold;
+    }
+
+    .content img {
+        max-width: 100%;
+    }
+
+    .content {
+        max-width: 1000px;
+        margin: 50px auto;
+    }
+
+    .content h1 {
+        margin: 0;
+    }
+
+    .content small {
+        font-style: italic;
+    }
+
+    .content p {
+        line-height: 1.5;
+    }
+</style>
+</html>

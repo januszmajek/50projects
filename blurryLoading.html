@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Blurry Loading</title>
+</head>
+
+<body>
+    <section class="background"></section>
+    <div class="text">0%</div>
+</body>
+
+<script>
+    const text = document.querySelector(".text")
+    const background = document.querySelector(".background")
+
+    let load = 0
+
+    let int = setInterval(blurring, 30)
+
+    function blurring() {
+        load++
+
+        if (load > 99) {
+            clearInterval(int)
+        }
+
+        text.innerText = `${load}%`
+        text.style.opacity = scale(load, 0, 100, 1, 0)
+        background.style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`
+    }
+
+    // taken from
+    // https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+    const scale = (num, in_min, in_max, out_min, out_max) => {
+        return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+    }
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        margin: 0;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .background {
+        background: darkslategray;
+        position: absolute;
+        top: -30px;
+        left: -30px;
+        width: calc(100vw + 60px);
+        height: calc(100vh + 60px);
+        z-index: -1;
+        filter: blur(0px);
+    }
+
+    .text {
+        font-size: 50px;
+        color: white;
+    }
+</style>
+</html>

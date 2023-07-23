@@ -1,0 +1,83 @@
+<!--first attempt-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Hidden Search</title>
+</head>
+<body>
+<div id="searchContainer">
+    <input type="text" id="searchInput">
+    <button id="searchButton" onClick="expandSearch()">
+        <i class="fas fa-search icon fa-2x"></i>
+    </button>
+</div>
+</body>
+
+<script>
+    const container = document.getElementById("searchContainer");
+    const input = document.getElementById("searchInput");
+    function expandSearch() {
+
+        if (container.classList.contains("expanded")) {
+            container.classList.remove("expanded");
+            input.style.display = "none";
+        } else {
+            container.classList.add("expanded");
+            input.style.display = "inline";
+        }
+    }
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: mediumpurple;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    #searchContainer {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        transition: width 0.3s ease;
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    #searchContainer.expanded {
+        background-color: white;
+        padding: 0 10px 0 10px;
+        width: 200px;
+    }
+
+    #searchInput {
+        display: none;
+        flex-grow: 1;
+        border: none;
+        outline: none;
+    }
+
+    #searchButton {
+        background: white;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+</style>
+</html>
+
